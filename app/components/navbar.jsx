@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { MdMenu, MdClose } from "react-icons/md";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +15,21 @@ function Navbar() {
           </Link>
         </div>
 
-        <div className="md:hidden">
+        <div className="block md:hidden z-50">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-white hover:text-[#16f2b3] focus:outline-none flex items-center justify-center p-2"
+            aria-label="Toggle Menu"
           >
-            {isOpen ? <MdClose size={30} /> : <MdMenu size={30} />}
+            {isOpen ? (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
 
