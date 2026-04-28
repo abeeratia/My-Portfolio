@@ -1,66 +1,87 @@
-// @flow strict
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { MdMenu, MdClose } from "react-icons/md";
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="bg-transparent">
-      <div className="flex items-center justify-between py-5">
+      <div className="flex items-center justify-between py-5 relative">
         <div className="flex items-center flex-shrink-0">
           <Link href="/" className=" text-[#16f2b3] text-3xl font-bold">
             Abeer Atia
           </Link>
         </div>
 
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white hover:text-[#16f2b3] focus:outline-none flex items-center justify-center p-2"
+          >
+            {isOpen ? <MdClose size={30} /> : <MdMenu size={30} />}
+          </button>
+        </div>
+
         <ul
-          className="flex flex-col items-start w-full h-screen mt-4 text-sm opacity-0 max-h-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:opacity-100"
+          className={`${
+            isOpen ? "opacity-100 max-h-screen pb-4" : "opacity-0 max-h-0 overflow-hidden"
+          } absolute top-full left-0 z-50 flex flex-col items-start w-full bg-[#0d1224] text-sm md:opacity-100 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:bg-transparent md:static md:pb-0 transition-all duration-300 ease-in-out md:overflow-visible`}
           id="navbar-default"
         >
-          <li>
+          <li className="w-full md:w-auto">
             <Link
               className="block px-4 py-2 no-underline outline-none hover:no-underline"
               href="/#about"
+              onClick={() => setIsOpen(false)}
             >
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
+              <div className="text-sm text-white transition-colors duration-300 hover:text-[#16f2b3]">
                 ABOUT
               </div>
             </Link>
           </li>
-          <li>
+          <li className="w-full md:w-auto">
             <Link
               className="block px-4 py-2 no-underline outline-none hover:no-underline"
               href="/#experience"
+              onClick={() => setIsOpen(false)}
             >
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
+              <div className="text-sm text-white transition-colors duration-300 hover:text-[#16f2b3]">
                 EXPERIENCE
               </div>
             </Link>
           </li>
-          <li>
+          <li className="w-full md:w-auto">
             <Link
               className="block px-4 py-2 no-underline outline-none hover:no-underline"
               href="/#skills"
+              onClick={() => setIsOpen(false)}
             >
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
+              <div className="text-sm text-white transition-colors duration-300 hover:text-[#16f2b3]">
                 SKILLS
               </div>
             </Link>
           </li>
-          <li>
+          <li className="w-full md:w-auto">
             <Link
               className="block px-4 py-2 no-underline outline-none hover:no-underline"
               href="/#education"
+              onClick={() => setIsOpen(false)}
             >
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
+              <div className="text-sm text-white transition-colors duration-300 hover:text-[#16f2b3]">
                 EDUCATION
               </div>
             </Link>
           </li>
-          <li>
+          <li className="w-full md:w-auto">
             <Link
               className="block px-4 py-2 no-underline outline-none hover:no-underline"
               href="/#projects"
+              onClick={() => setIsOpen(false)}
             >
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">
+              <div className="text-sm text-white transition-colors duration-300 hover:text-[#16f2b3]">
                 PROJECTS
               </div>
             </Link>
